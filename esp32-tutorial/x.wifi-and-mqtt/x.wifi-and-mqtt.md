@@ -46,3 +46,6 @@ void loop() {
 }
 ```
 </details>
+
+## Adding MQTT
+1. To add MQTT support we need to include a library called `PubSubClient` to the project. Click `Libraries` under `QUICK ACCESS` in the PlatformIO menu and search for `PubSubClient`. Click on the one created by Nick O'Leary and click `Add to project`. Select your project in the dropdown and click `Add`.

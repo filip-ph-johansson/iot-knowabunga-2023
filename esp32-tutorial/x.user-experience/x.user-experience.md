@@ -81,6 +81,8 @@ void printStuff(char* someText) {
 }
 ```
 
+`strcpy()` is a built-in function for copying the content of a char array to another.
+
 14. In `loop()` remove the `printStuff()` line and replace it with:
 ```cpp
 char msg[] = "IoT Knowabunga 2023";
@@ -88,8 +90,7 @@ char msg[] = "IoT Knowabunga 2023";
 printStuff(msg);
 ```
 
-15. If you upload the code the display should still display "IoT Knowabunga 2023" and flicker.
-16. Try using the built in character array comparison function `strcmp` to stop the display from flickering.
+15. If you upload the code the display should still display "IoT Knowabunga 2023" and flicker. Try using the built in character array comparison function `strcmp` to stop the flicering.
 
 <details>
   <summary>Solution</summary>
@@ -113,13 +114,13 @@ void printStuff(char* someText) {
 
 You should hopefully have a non-flickering display now.
 
-17. Let's display the potentiometer value on the screen instead of the static text. To do so we need to convert the integer `mappedValue` to a character array and pass it to `printStuff`. To do this replace `char msg[] = "IoT Knowabunga 2023";` with the following lines: 
+16. Instead of just displaying the same static text let's display the potentiometer value on the screen instead. To do so we need to convert the integer `mappedValue` to a character array and pass it to `printStuff`. To do this replace `char msg[] = "IoT Knowabunga 2023";` with the following lines: 
 ```cpp
 char msg[4];
 itoa(mappedValue, msg, 10);
 ```
 
-You code should now look something like this:
+Your code should now look something like this:
 ```cpp
 #include <Arduino.h>
 #include <TFT_eSPI.h>
@@ -165,8 +166,7 @@ void loop() {
   printStuff(msg);
 }
 ```
-
-You are now ready to continue to the next part.
+Upload the code. If you turn the dial of the potentiometer the displayed value should now change. Proceed to the next part of the tutorial.
 
 ### Extras
 

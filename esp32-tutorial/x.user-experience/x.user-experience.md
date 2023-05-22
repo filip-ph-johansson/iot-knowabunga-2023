@@ -92,9 +92,6 @@ printStuff(msg);
 
 15. If you upload the code the display should still display "IoT Knowabunga 2023" and flicker. Try using the built in character array comparison function `strcmp` to stop the flicering.
 
-<details>
-  <summary>Solution</summary>
-
 ```cpp
 void printStuff(char* someText) {
   if (strcmp(previousDisplayValue, someText) == 0) {
@@ -110,7 +107,6 @@ void printStuff(char* someText) {
   strcpy(previousDisplayValue, someText);
 }
 ```
-</details>
 
 You should hopefully have a non-flickering display now.
 
@@ -120,13 +116,15 @@ char msg[4];
 itoa(mappedValue, msg, 10);
 ```
 
+17. Remove the `Serial.println(mappedValue);` from `loop()`. We don't need to print that value to the serial port now that we see it on the display.
+
 Your code should now look something like this:
 ```cpp
 #include <Arduino.h>
 #include <TFT_eSPI.h>
 
 #define BUTTON_PIN 26
-#define POT_PIN 13
+#define POTENTIOMETER_PIN 33
 
 TFT_eSPI tft = TFT_eSPI();
 char previousDisplayValue[100];
@@ -155,10 +153,8 @@ void printStuff(char* someText) {
 
 void loop() {
   int buttonState = digitalRead(BUTTON_PIN);
-  int potentiometerValue = analogRead(POT_PIN);
+  int potentiometerValue = analogRead(POTENTIOMETER_PIN);
   int mappedValue = map(potentiometerValue, 0, 4095, 0, 10);
-
-  Serial.println(mappedValue);
 
   char msg[4];
   itoa(mappedValue, msg, 10);

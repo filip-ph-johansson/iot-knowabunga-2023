@@ -47,7 +47,7 @@ Some of the gpio pins on the ESP32 are also capable of reading analog values. In
 To illustrate this we will wire a potentiometer to the ESP32. A potentiometer is basically just a variable resistor with three pins: Vin, Output and Ground.
 
 1. Open your `src/main.cpp` file.
-2. Below `#define BUTTON_PIN 26` add `#define POTENTIOMETER_PIN 13`
+2. Below `#define BUTTON_PIN 26` add `#define POTENTIOMETER_PIN 33`
 3. Add a potentiometer to your breadboard and wire it like on the image below:
 
 <img src="images/potentiometer-wiring.png" width="400px">
@@ -68,7 +68,7 @@ Let's try to map the potentiometer value to a 0 to 10 range by adding `int mappe
 #include <Arduino.h>
 
 #define BUTTON_PIN 26
-#define POT_PIN 13
+#define POTENTIOMETER_PIN 33
 
 void setup() {
   Serial.begin(115200);

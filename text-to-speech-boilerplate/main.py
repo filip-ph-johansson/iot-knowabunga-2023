@@ -16,7 +16,7 @@ def bind_on_message(textToSpeech: Callable[[str], None]):
 		# The callback for when a PUBLISH message is received from the server.
 		username = msg.payload.decode("utf-8")
 
-		# Change this part to create a personalized announcement. Use the 'textToSpeech(string)' function.
+		# Use the 'textToSpeech(string)' function to create a personalized message.
 		print(f"received the message {username} on the topic {msg.topic}")
 
 	return on_message

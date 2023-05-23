@@ -16,8 +16,9 @@ def bind_on_message(textToSpeech: Callable[[str], None]):
 		# The callback for when a PUBLISH message is received from the server.
 		username = msg.payload.decode("utf-8")
 
+		# Change this part to create a more personalized announcement.
 		if msg.topic == "/ttv/unknown":	
-			# in this case the username is "unknown" because the tag hasn't been registered in the Kontan app yet.
+			# In this case the username is "unknown" because the tag hasn't been registered in the Kontan app yet.
 			textToSpeech("unknown user detected")
 		elif msg.topic == "/ttv/inbound":
 			textToSpeech(f"welcome {username}")
@@ -31,7 +32,8 @@ def main():
 	mqtt_port = int(os.environ.get("MQTT_PORT", "1883"))
 
 	engine = pyttsx3.init()
-	engine.setProperty('rate', 50) # this property controls the voice speed
+	# The 'rate' property controls the voice speed.
+	engine.setProperty('rate', 50) 
 
 	def textToSpeech(text: str):
 		engine.say(text)

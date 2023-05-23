@@ -16,14 +16,8 @@ def bind_on_message(textToSpeech: Callable[[str], None]):
 		# The callback for when a PUBLISH message is received from the server.
 		username = msg.payload.decode("utf-8")
 
-		# Change this part to create a more personalized announcement.
-		if msg.topic == "/ttv/unknown":	
-			# In this case the username is "unknown" because the tag hasn't been registered in the Kontan app yet.
-			textToSpeech("unknown user detected")
-		elif msg.topic == "/ttv/inbound":
-			textToSpeech(f"welcome {username}")
-		elif msg.topic == "/ttv/outbound":
-			textToSpeech(f"goodbye {username}")
+		# Change this part to create a personalized announcement. Use the 'textToSpeech(string)' function.
+		print(f"received the message {username} on the topic {msg.topic}")
 
 	return on_message
 
